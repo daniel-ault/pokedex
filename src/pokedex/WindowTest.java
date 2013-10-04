@@ -32,7 +32,7 @@ public class WindowTest extends javax.swing.JFrame {
             nameListComboBox.addItem(s);
         }
         
-        
+        GitTest.test();
     }
 
     protected ImageIcon createImageIcon(String path) {
