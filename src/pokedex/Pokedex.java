@@ -15,14 +15,16 @@ public class Pokedex {
     /**
      * @param args the command line arguments
      */
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         try {
             //dbTest();
             //String names[] = getPokemonNameList();
             
             //for (String name : names)
                 //System.out.println(name);
-            System.out.println(getFlavorText(4));
+            Pokemon pokemon = new Pokemon(1);
+            System.out.println("Type 1: " + pokemon.getType(1));
+            System.out.println("Type 2: " + pokemon.getType(2));
         } catch (Exception e) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
