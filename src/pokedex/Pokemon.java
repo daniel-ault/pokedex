@@ -19,6 +19,8 @@ public class Pokemon {
     private String type1;
     private String type2;
     
+    private int generation_id;
+    
     private Connection c;
     
     public Pokemon(int species_id) throws Exception {
@@ -34,12 +36,14 @@ public class Pokemon {
         else if (slot == 2) return type2;
         else return null;
     }
+    public int getGenerationId() { return generation_id; }
     
     public void updatePokemon(int species_id) throws Exception {
         this.species_id = species_id;
         updateName();
         updateFlavorText();
         updateType();
+        updateGeneration();
     }
     
     private void connectToDatabase() throws Exception {
@@ -82,6 +86,16 @@ public class Pokemon {
             type2 = getTypeName(rs.getInt(1));
         else 
             type2 = "None";
+    }
+    
+    private void updateGeneration() throws Exception {
+        String query = "SELECT generation_id FROM pokemon_species";
+        query += " WHERE id=" + species_id;
+        
+        Statement statement = c.createStatement();
+        ResultSet rs = statement.executeQuery(type1);
+        
+        generation_id = rs.getInt(1);
     }
     
     private String getTypeName(int type_id) throws Exception {
